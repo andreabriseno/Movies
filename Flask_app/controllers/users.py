@@ -22,6 +22,24 @@ def register():
     session['user_id'] =id
     return redirect('/dashboard')
 
+@app.route('/login',methods=['POST'])
+def login():
+    # see if the username provided exists in the database
+    user = User.get_by_email(request.form)
+    # user is not registered in the db
+    if not user:
+        # if we get False after checking the email
+        flash("Invalid Email or Password","login")
+        return redirect('/')
+    if not bcrypt.check_password_hash(user.password, request.form['password']):
+        # if we get False after checking the password
+        flash("Invalid Email or Password","login")
+        return redirect('/')
+    # if the passwords matched, we set the user_id into session
+    session['user_id'] = user.id
+    # never render on a post!!!
+    return redirect('/dashboard')
+
 
 @app.route('/user/details/<int:id>')
 def user_details(id):
