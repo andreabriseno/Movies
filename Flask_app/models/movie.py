@@ -12,6 +12,14 @@ class Movie:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
+    @classmethod
+    def get_all(cls):
+        query ="SELECT * FROM movie;"
+        results = connectToMySQL(DB).query_db(query)
+        movie = []
+        for m in results:
+            movie.append(cls(m))
+        return movie
 
     @classmethod
     def create(cls, data):
@@ -31,5 +39,5 @@ class Movie:
     
     @classmethod
     def destroy (cls, data):
-        query = "DELETE FROM events WHERE id = %(id)s;"
+        query = "DELETE FROM movie WHERE id = %(id)s;"
         return connectToMySQL(DB).query_db(query, data)
