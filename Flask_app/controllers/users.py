@@ -49,8 +49,7 @@ def dashboard():
     data ={
         'id': session['user_id']
     }
-
-    return render_template("dashboard.html",movie= Movie.get_all())
+    return render_template("dashboard.html", movies = Movie.get_all())
 
 @app.route('/logout')
 def logout():
