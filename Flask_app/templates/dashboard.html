@@ -7,6 +7,39 @@
     <title>Dashboard of music</title>
 </head>
 <body>
+    <div>
+        <div>
+            <div>
+                <h1>
+                    All Movies
+                </h1>
+            </div>
+            <div>
+                <a href="/logout"> Logout </a>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th> Title </th>
+                    <th> Genre </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mov in movies %}
+                <tr>
+                    <td>{{mov['title']}} </td>
+                    <td>{{mov['genre']}} </td>
+                    <td> 
+                        <a href="/edit/{{mov.id}}"> Edit </a>
+                        <a href="/delete/{{mov.id}}"> Delete </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 </body>
 </html>
