@@ -11,6 +11,8 @@ class Movie:
         self.genre = data['genre']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.user_id = data['user_id']
+        self.creator = None
 
     @classmethod
     def get_all(cls):
@@ -28,11 +30,11 @@ class Movie:
                 movie
                     (title, 
                     genre, 
-                    users_id) 
+                    user_id) 
             VALUES 
                 (%(title)s, 
                 %(genre)s,
-                %(users_id)s);
+                %(user_id)s);
             """
         results = connectToMySQL(DB).query_db(query, data)
         return results
