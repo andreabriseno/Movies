@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard of music</title>
+    <title>Dashboard</title>
 </head>
 <body>
     <div>
@@ -18,27 +18,30 @@
                 <a href="/logout"> Logout </a>
             </div>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th> Title </th>
-                    <th> Genre </th>
-                    <th> Actions </th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for mov in movies %}
-                <tr>
-                    <td>{{mov['title']}} </td>
-                    <td>{{mov['genre']}} </td>
-                    <td> 
-                        <a href="/edit/{{mov.id}}"> Edit </a>
-                        <a href="/delete/{{mov.id}}"> Delete </a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th> Title </th>
+                        <th> Genre </th>
+                        <th> Actions </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mov in movies %}
+                    <tr>
+                        <td>{{mov['title']}} </td>
+                        <td>{{mov['genre']}} </td>
+                        <td> 
+                            <a href="/edit/{{mov.id}}"> Edit </a>
+                            <a href="/delete/{{mov.id}}"> Delete </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="/movie/create"> Create </a>
     </div>
 
 </body>
